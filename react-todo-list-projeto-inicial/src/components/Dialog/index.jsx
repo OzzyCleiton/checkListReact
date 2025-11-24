@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import './Dialog.style.css'
 export function Dialog() {
 
@@ -6,7 +6,17 @@ export function Dialog() {
     // useRef é o jeito react de buscar elementos no DOM!
 
     const dialogRef = useRef(null);
-    
+    const contadorRef = useRef(0);
+    const [estado, setEstado] = useState(0)
+
+    function incrementador() {
+
+
+        setEstado(contadorRef.current++)
+        console.log(estado);
+
+    }
+
     // "Show the dialog" button opens the dialog modally
     const showButton = () => {
         dialogRef.current.showModal();
@@ -20,7 +30,8 @@ export function Dialog() {
         <>
             <dialog ref={dialogRef}>
                 <button autoFocus onClick={closeButton}>Close</button>
-                <p>This modal dialog has a groovy backdrop!</p>
+                <p>Você clicou {estado} vezes</p>
+                <button onClick={incrementador}>Contador</button>
             </dialog>
             <button onClick={showButton}>Show the dialog</button>
         </>
