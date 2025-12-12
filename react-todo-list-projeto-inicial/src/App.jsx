@@ -1,3 +1,4 @@
+import { useState } from "react"
 import { ChecklistsWrapper } from "./components/ChecklistsWrapper"
 import { Container } from "./components/Container"
 import { Dialog } from "./components/Dialog"
@@ -53,6 +54,14 @@ const completed = [
 
 function App() {
 
+  const [openDialog, setOpenDialog] = useState(false);
+
+  const toggleDialog = () => {
+    const showDialog = setOpenDialog(!openDialog)
+    console.log('Alterar modal');
+    
+  }
+
   return (
     <main>
       <Container>
@@ -61,8 +70,9 @@ function App() {
             <IconSchool /> Plano de estudos
           </Heading>
         </Header>
-        <Dialog></Dialog>
+        <Dialog isOpen={openDialog} onClose={toggleDialog}></Dialog>
         <ChecklistsWrapper>
+
           <SubHeading>Para estudar</SubHeading>
           <ToDoList>
             {todos.map(function (t) {
@@ -76,7 +86,7 @@ function App() {
             })}
           </ToDoList>
           <Footer>
-            <FabButton>
+            <FabButton onClick={toggleDialog}>
               <IconPlus />
             </FabButton>
           </Footer>
