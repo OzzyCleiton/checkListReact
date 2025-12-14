@@ -1,0 +1,11 @@
+::backdrop {
+  background-color: #000;
+  opacity: 0.75;
+}
+
+.btn-wapper {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  
+}

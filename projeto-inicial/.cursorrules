@@ -1,0 +1,5 @@
+# Desabilitar todas as sugestões de IA
+DISABLE_AI_SUGGESTIONS=true
+DISABLE_INLINE_COMPLETIONS=true
+DISABLE_AUTO_COMPLETIONS=true
+
