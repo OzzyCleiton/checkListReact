@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { Children, useState } from "react"
 import { ChecklistsWrapper } from "./components/ChecklistsWrapper"
 import { Container } from "./components/Container"
 import { Dialog } from "./components/Dialog"
@@ -10,6 +10,7 @@ import { IconPlus, IconSchool } from "./components/icons"
 import { SubHeading } from "./components/SubHeading"
 import { ToDoItem } from "./components/ToDoItem"
 import { ToDoList } from "./components/ToDoList"
+import { TodoForm } from "./components/TodoForm"
 
 const todos = [
   {
@@ -57,8 +58,12 @@ function App() {
   const [openDialog, setOpenDialog] = useState(false);
 
   const toggleDialog = () => {
-    const showDialog = setOpenDialog(!openDialog)
+    setOpenDialog(!openDialog);
     console.log('Alterar modal');
+  }
+
+  const addTodo = () => {
+    console.log('devemos adicionar algo no todo?');
     
   }
 
@@ -70,7 +75,9 @@ function App() {
             <IconSchool /> Plano de estudos
           </Heading>
         </Header>
-        <Dialog isOpen={openDialog} onClose={toggleDialog}></Dialog>
+        <Dialog isOpen={openDialog} onClose={toggleDialog}>
+          <TodoForm onSubmit={addTodo}/>
+        </Dialog>
         <ChecklistsWrapper>
 
           <SubHeading>Para estudar</SubHeading>

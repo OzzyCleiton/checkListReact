@@ -1,21 +1,24 @@
-import { useEffect, useRef } from 'react';
+import {  useEffect, useRef } from 'react';
 import './Dialog.style.css'
-export function Dialog({ isOpen, onClose }) {
+export function Dialog({ isOpen, onClose, children }) {
 
     // const dialog = document.querySelector("dialog");
     // useRef é o jeito react de buscar elementos no DOM!
 
     const dialogRef = useRef(null);
+    const inputRef = useRef('')
 
     useEffect(() => {
-            if (isOpen) {
-                showDialog()
-            }else{
-                closeDialog()
-            }
+        if (isOpen) {
+            showDialog()
+        } else {
+            closeDialog()
+        }
 
     }, [isOpen])
+
     
+
     // "Show the dialog" button opens the dialog modally
     const showDialog = () => {
         dialogRef.current.showModal();
@@ -27,9 +30,15 @@ export function Dialog({ isOpen, onClose }) {
     };
     return (
         <>
-            <dialog ref={dialogRef}>
-                <button autoFocus onClick={onClose}>Close</button>
-                <p>This modal dialog has a groovy backdrop!</p>
+            <dialog ref={dialogRef} className='dialog'>
+                <div className="btn-close-wapper">
+                    <button autoFocus onClick={onClose} className='btn-close'>
+                        <img src="../public/close.png" alt="botao de fechar" />
+                    </button>
+                </div>
+                <div className="body">
+                    {children}
+                </div>
             </dialog>
         </>
     )

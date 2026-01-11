@@ -1,0 +1,14 @@
+.field {
+    width: 360px;
+    max-width: 100%;
+    border: 1px solid #EAEAEA;
+    border-radius: 24px;
+    padding: 12px 16px;
+    background-color: transparent;
+    color: #EAEAEA;
+
+}
+
+.field::placeholder {
+    color: #EAEAEA;
+}
